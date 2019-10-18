@@ -5,7 +5,6 @@ import java.util.Scanner;
 import com.dev.dummy.bean.UserBeanLombok;
 import com.dev.dummy.factory.UserFactory;
 import com.dev.dummy.services.UserServices;
-import com.dev.dummy.services.UserServicesImpl;
 import com.dev.dummy.services.UserValidation;
 
 public class GetInfo {
