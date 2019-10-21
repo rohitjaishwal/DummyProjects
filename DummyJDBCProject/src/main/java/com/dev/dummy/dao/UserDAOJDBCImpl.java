@@ -32,7 +32,7 @@ public class UserDAOJDBCImpl implements UserDAO {
 	@Override
 	public List<UserBeanLombok> getAllInfo() {
 		List<UserBeanLombok> list = new ArrayList<UserBeanLombok>();
-		String query = "SELECT * FROM users_info";
+		String query = prop.getProperty("selectQuery");
 		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("user"),
 				prop.getProperty("password"));
 				Statement stmt = conn.createStatement();
@@ -53,7 +53,7 @@ public class UserDAOJDBCImpl implements UserDAO {
 
 	@Override
 	public UserBeanLombok getInfo(int userid) {
-		String query = "SELECT * FROM users_info where userid = ?";
+		String query = prop.getProperty("selectQueryParam");
 		try (Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("user"),
 				prop.getProperty("password")); PreparedStatement pstmt = conn.prepareStatement(query)) {
 			pstmt.setInt(1, userid);
@@ -74,7 +74,7 @@ public class UserDAOJDBCImpl implements UserDAO {
 
 	@Override
 	public boolean insertUser(UserBeanLombok user) {
-		String query = "INSERT INTO users_info values(?,?,?,?)";
+		String query = prop.getProperty("insertQuery");
 		try(Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("user"),
 				prop.getProperty("password")); PreparedStatement pstmt = conn.prepareStatement(query)) {
 			pstmt.setInt(1, user.getUserid());

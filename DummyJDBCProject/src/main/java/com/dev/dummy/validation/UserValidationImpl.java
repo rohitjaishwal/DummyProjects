@@ -35,7 +35,7 @@ public class UserValidationImpl implements UserValidation {
 	@Override
 	public boolean emailValidation(String email) {
 
-		pat = Pattern.compile("\\w+\\@\\w+\\.\\w+");
+		pat = Pattern.compile("\\w+\\W\\w+\\@\\w+\\.\\w+");
 		mat = pat.matcher(email);
 		if(mat.matches()) {
 			return true;
